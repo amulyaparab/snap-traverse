@@ -5,7 +5,7 @@ export const Navbar = () => {
   return (
     <div className="navbar">
       <h1 onClick={() => navigate("/")}>Snap Traverse</h1>
-      <i class="fa-solid fa-moon"></i>
+      <i className="fa-solid fa-moon"></i>
     </div>
   );
 };

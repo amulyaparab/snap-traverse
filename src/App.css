@@ -49,7 +49,7 @@ a {
 
 a:hover,
 .navbar i:hover {
-  color: white;
+  color: rgb(114, 176, 247);
   text-shadow: 0 0 7px #e6e6e6, 0 0 45px rgb(114, 141, 231),
     0 0 90px rgb(114, 176, 247);
 }
@@ -81,4 +81,15 @@ a:hover,
 .navbar i {
   font-size: 1.5rem;
   cursor: pointer;
+}
+.map {
+  width: 90%;
+  margin: auto;
+  height: 70vh;
+}
+.active,
+.active:hover {
+  color: white;
+  text-shadow: 0 0 7px #e6e6e6, 0 0 45px rgb(114, 141, 231),
+    0 0 90px rgb(114, 176, 247);
 }

@@ -4,10 +4,14 @@ export const Header = () => {
   return (
     <ul className="pagination">
       <li>
-        <NavLink to="/">Map</NavLink>
+        <NavLink to="/" activeClassName="active">
+          Map
+        </NavLink>
       </li>
       <li>
-        <NavLink to="/cube">Cube</NavLink>
+        <NavLink to="/cube" activeClassName="active">
+          Cube
+        </NavLink>
       </li>
     </ul>
   );
