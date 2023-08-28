@@ -36,3 +36,43 @@
     transform: rotate(360deg);
   }
 }
+.canvas {
+  width: 70%;
+  margin-top: 1.5rem;
+
+  border-radius: 10px;
+}
+
+a {
+  text-decoration: none;
+  color: #9fb9f1;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+.pagination {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+.pagination li {
+  font-size: 1.5rem;
+  margin-right: 1rem;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.7rem 3rem;
+  box-shadow: 0 0 5px 0.5px rgb(83, 157, 241);
+}
+.navbar {
+  cursor: pointer;
+}
+.navbar i {
+  font-size: 1.5rem;
+  cursor: pointer;
+}

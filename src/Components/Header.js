@@ -2,9 +2,14 @@ import { NavLink } from "react-router-dom";
 
 export const Header = () => {
   return (
-    <nav>
-      <NavLink to="/">Map</NavLink>
-      <NavLink to="/cube">Cube</NavLink>
-    </nav>
+    <ul className="pagination">
+      <li>
+        <NavLink to="/">Map</NavLink>
+      </li>{" "}
+      <li>|</li>
+      <li>
+        <NavLink to="/cube">Cube</NavLink>
+      </li>
+    </ul>
   );
 };

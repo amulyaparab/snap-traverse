@@ -1,3 +1,5 @@
+import { Box } from "../Components/Box";
+
 export const Cube = () => {
-  return <h1>Cube</h1>;
+  return <Box />;
 };
