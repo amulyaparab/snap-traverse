@@ -3,9 +3,12 @@ import { useEffect, useRef } from "react";
 
 export const SceneComponent = ({ antialias, onSceneReady }) => {
   const reactCanvas = useRef(null);
+
   useEffect(() => {
     const { current: canvas } = reactCanvas;
+
     if (!canvas) return;
+
     const engine = new Engine(canvas, antialias);
     const scene = new Scene(engine);
 
@@ -18,12 +21,15 @@ export const SceneComponent = ({ antialias, onSceneReady }) => {
     } else {
       scene.onReadyObservable().addOnce((scene) => onSceneReady(scene));
     }
+
     const resize = () => {
       scene.getEngine().resize();
     };
+
     if (window) {
       window.addEventListener("resize", resize);
     }
+
     return () => {
       scene.getEngine().dispose();
       window.addEventListener("resize", resize);

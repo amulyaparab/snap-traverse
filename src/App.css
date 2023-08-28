@@ -39,18 +39,20 @@
 .canvas {
   width: 70%;
   margin-top: 1.5rem;
-
   border-radius: 10px;
 }
 
 a {
   text-decoration: none;
-  color: #9fb9f1;
-}
-a:hover {
-  text-decoration: underline;
+  color: #8ba3d8;
 }
 
+a:hover,
+.navbar i:hover {
+  color: white;
+  text-shadow: 0 0 7px #e6e6e6, 0 0 45px rgb(114, 141, 231),
+    0 0 90px rgb(114, 176, 247);
+}
 .pagination {
   list-style: none;
   display: flex;
