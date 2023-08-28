@@ -36,5 +36,5 @@ export const SceneComponent = ({ antialias, onSceneReady }) => {
     };
   }, []);
 
-  return <canvas className="canvas" ref={reactCanvas} />;
+  return <canvas className="canvas" ref={reactCanvas} id="react-canvas" />;
 };

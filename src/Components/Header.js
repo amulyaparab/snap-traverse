@@ -5,8 +5,7 @@ export const Header = () => {
     <ul className="pagination">
       <li>
         <NavLink to="/">Map</NavLink>
-      </li>{" "}
-      <li>|</li>
+      </li>
       <li>
         <NavLink to="/cube">Cube</NavLink>
       </li>
