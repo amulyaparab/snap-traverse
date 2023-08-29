@@ -93,3 +93,22 @@ a:hover,
   text-shadow: 0 0 7px #e6e6e6, 0 0 45px rgb(114, 141, 231),
     0 0 90px rgb(114, 176, 247);
 }
+.screenshot-btn {
+  background-color: #212121;
+  color: white;
+  padding: 0.7rem 1.5rem;
+  margin-top: 1.5rem;
+  font-size: medium;
+  /* font-weight: bold; */
+  border-radius: 5px;
+  border: none;
+  box-shadow: 0 0 10px 0.5px rgb(83, 157, 241);
+  cursor: pointer;
+  text-shadow: 0 0 7px #e6e6e6, 0 0 45px rgb(114, 141, 231),
+    0 0 90px rgb(114, 176, 247);
+}
+.screenshot-btn:hover {
+  background-color: white;
+  color: #212121;
+  text-shadow: 0 0 10px black, 0 0 45px rgb(114, 141, 231);
+}

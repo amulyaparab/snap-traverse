@@ -5,9 +5,11 @@ import Map, { GeolocateControl, Marker } from "react-map-gl";
 import { NavigationControl } from "react-map-gl";
 import { useScreenshot } from "../Contexts/ScreenShotProvider";
 import { useBox } from "../Contexts/BoxProvider";
+import { useNavigate } from "react-router-dom";
 
 export const MapBox = () => {
   const map = useRef(null);
+  const navigate = useNavigate();
   const initialLongitude = 73.8562;
   const initialLatitude = 18.5204;
   const [viewPort, setViewPort] = useState({
@@ -58,7 +60,15 @@ export const MapBox = () => {
           positionOptions={{ enableHighAccuracy: true }}
         />
       </Map>
-      <button onClick={() => fetchImage()}>Take a Screenshot</button>
+      <button
+        className="screenshot-btn"
+        onClick={() => {
+          fetchImage();
+          navigate("/cube");
+        }}
+      >
+        Take a Screenshot
+      </button>
     </div>
   );
 };
