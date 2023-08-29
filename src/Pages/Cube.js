@@ -1,5 +1,12 @@
 import { Box } from "../Components/Box";
+import { useScreenshot } from "../Contexts/ScreenShotProvider";
 
 export const Cube = () => {
-  return <Box />;
+  const { screenshot } = useScreenshot();
+  return (
+    <>
+      <Box />
+      {screenshot && <img src={screenshot} alt="screenshot" />}
+    </>
+  );
 };

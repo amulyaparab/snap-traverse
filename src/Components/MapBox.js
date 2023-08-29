@@ -1,18 +1,23 @@
 // import mapboxgl from "mapbox-gl";
 import { useEffect, useRef, useState } from "react";
 import "mapbox-gl/dist/mapbox-gl.css";
-import Map from "react-map-gl";
+import Map, { GeolocateControl, Marker } from "react-map-gl";
+import { NavigationControl } from "react-map-gl";
+import { useScreenshot } from "../Contexts/ScreenShotProvider";
 
 export const MapBox = () => {
   const map = useRef(null);
+  const initialLongitude = 73.8562;
+  const initialLatitude = 18.5204;
   const [viewPort, setViewPort] = useState({
     width: "100%",
     height: "100%",
-    longitude: 73.8562,
-    latitude: 18.5204,
+    longitude: initialLongitude,
+    latitude: initialLatitude,
     zoom: 10,
   });
-  const [imageURL, setImageURL] = useState("");
+
+  const { setScreenShot } = useScreenshot();
   const accessToken = process.env.REACT_APP_MAP_TOKEN;
 
   console.log(viewPort);
@@ -30,7 +35,7 @@ export const MapBox = () => {
         )
       );
       const objectURL = `data:image/jpeg;base64,${base64Data}`;
-      setImageURL(objectURL);
+      setScreenShot(objectURL);
     } else {
       console.error("Error fetching image data");
     }
@@ -42,9 +47,15 @@ export const MapBox = () => {
         {...viewPort}
         mapboxAccessToken={process.env.REACT_APP_MAP_TOKEN}
         mapStyle="mapbox://styles/ames2700/cllw50r3000g901pj638y82b0"
-      ></Map>
+      >
+        <NavigationControl />
+        <Marker longitude={initialLongitude} latitude={initialLatitude} />
+        <GeolocateControl
+          position="top-left"
+          positionOptions={{ enableHighAccuracy: true }}
+        />
+      </Map>
       <button onClick={() => fetchImage()}>Take a Screenshot</button>
-      {imageURL && <img src={imageURL} alt="API Fetched" />}
     </div>
   );
 };
