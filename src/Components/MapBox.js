@@ -35,7 +35,7 @@ export const MapBox = () => {
       setScreenShot(objectURL);
       setBoxTexture(objectURL);
       setShowModal(true);
-      setTimeout(() => setShowModal(false), 1500);
+      setTimeout(() => setShowModal(false), 3000);
     } else {
       console.error("Error fetching image data");
     }

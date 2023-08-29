@@ -37,10 +37,11 @@
   }
 }
 .canvas {
-  width: 70%;
+  width: 75%;
   margin-top: 1.5rem;
   border-radius: 10px;
-  z-index: -1;
+  outline: none;
+  cursor: grab;
 }
 
 a {
@@ -137,9 +138,15 @@ a:hover,
 .notification-modal div {
   width: max-content;
   text-align: left;
-  padding: 0 1.5rem;
+  padding: 0 2rem;
 }
-
+.notification-modal i {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  font-size: 21px;
+  cursor: pointer;
+}
 .notification-modal p {
   font-size: 14px;
 }
