@@ -1,12 +1,13 @@
-import { Box } from "../Components/Box";
+import { SceneComponent } from "../Components/SceneComponent";
+import { useBox } from "../Contexts/BoxProvider";
 import { useScreenshot } from "../Contexts/ScreenShotProvider";
 
 export const Cube = () => {
   const { screenshot } = useScreenshot();
+  const { onSceneReady } = useBox();
   return (
     <>
-      <Box />
-      {screenshot && <img src={screenshot} alt="screenshot" />}
+      <SceneComponent antialias onSceneReady={onSceneReady} />
     </>
   );
 };

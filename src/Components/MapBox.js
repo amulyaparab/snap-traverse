@@ -4,6 +4,7 @@ import "mapbox-gl/dist/mapbox-gl.css";
 import Map, { GeolocateControl, Marker } from "react-map-gl";
 import { NavigationControl } from "react-map-gl";
 import { useScreenshot } from "../Contexts/ScreenShotProvider";
+import { useBox } from "../Contexts/BoxProvider";
 
 export const MapBox = () => {
   const map = useRef(null);
@@ -18,6 +19,7 @@ export const MapBox = () => {
   });
 
   const { setScreenShot } = useScreenshot();
+  const { setBoxTexture } = useBox();
   const accessToken = process.env.REACT_APP_MAP_TOKEN;
 
   console.log(viewPort);
@@ -36,6 +38,7 @@ export const MapBox = () => {
       );
       const objectURL = `data:image/jpeg;base64,${base64Data}`;
       setScreenShot(objectURL);
+      setBoxTexture(objectURL);
     } else {
       console.error("Error fetching image data");
     }

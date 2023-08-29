@@ -6,6 +6,7 @@ import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import { ThemeProvider } from "./Contexts/ThemeProvider";
 import { ScreenshotProvider } from "./Contexts/ScreenShotProvider";
+import { BoxProvider } from "./Contexts/BoxProvider";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -13,7 +14,9 @@ root.render(
     <BrowserRouter>
       <ThemeProvider>
         <ScreenshotProvider>
-          <App />
+          <BoxProvider>
+            <App />
+          </BoxProvider>
         </ScreenshotProvider>
       </ThemeProvider>
     </BrowserRouter>
