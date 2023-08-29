@@ -40,6 +40,7 @@
   width: 70%;
   margin-top: 1.5rem;
   border-radius: 10px;
+  z-index: -1;
 }
 
 a {
@@ -111,4 +112,37 @@ a:hover,
   background-color: white;
   color: #212121;
   text-shadow: 0 0 10px black, 0 0 45px rgb(114, 141, 231);
+}
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 10;
+}
+.notification-modal {
+  position: absolute;
+  background-color: #dfdddd;
+  display: flex;
+  color: #212121;
+  align-items: center;
+  top: 3rem;
+  right: 1rem;
+  padding: 0.2rem;
+  border-radius: 5px;
+}
+.notification-modal div {
+  width: max-content;
+  text-align: left;
+  padding: 0 1.5rem;
+}
+
+.notification-modal p {
+  font-size: 14px;
+}
+.notification-modal img {
+  width: 100px;
+  height: 100px;
 }

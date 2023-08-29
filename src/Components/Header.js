@@ -4,12 +4,12 @@ export const Header = () => {
   return (
     <ul className="pagination">
       <li>
-        <NavLink to="/" activeClassName="active">
+        <NavLink to="/" activeclassname="active">
           Map
         </NavLink>
       </li>
       <li>
-        <NavLink to="/cube" activeClassName="active">
+        <NavLink to="/cube" activeclassname="active">
           Cube
         </NavLink>
       </li>

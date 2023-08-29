@@ -1,26 +1,28 @@
-// import mapboxgl from "mapbox-gl";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import "mapbox-gl/dist/mapbox-gl.css";
 import Map, { GeolocateControl, Marker } from "react-map-gl";
 import { NavigationControl } from "react-map-gl";
 import { useScreenshot } from "../Contexts/ScreenShotProvider";
 import { useBox } from "../Contexts/BoxProvider";
-import { useNavigate } from "react-router-dom";
 
 export const MapBox = () => {
-  const map = useRef(null);
-  const navigate = useNavigate();
   const initialLongitude = 73.8562;
   const initialLatitude = 18.5204;
-  const [viewPort, setViewPort] = useState({
+  const initialViewport = {
     width: "100%",
     height: "100%",
     longitude: initialLongitude,
     latitude: initialLatitude,
     zoom: 10,
-  });
+  };
 
-  const { setScreenShot } = useScreenshot();
+  const [viewPort, setViewPort] = useState(
+    initialViewport
+      ? JSON.parse(localStorage.getItem("prevMapState"))
+      : initialViewport
+  );
+
+  const { setScreenShot, setShowModal } = useScreenshot();
   const { setBoxTexture } = useBox();
   const accessToken = process.env.REACT_APP_MAP_TOKEN;
 
@@ -29,33 +31,45 @@ export const MapBox = () => {
     const res = await fetch(
       `https://api.mapbox.com/styles/v1/mapbox/streets-v12/static/${viewPort.longitude},${viewPort.latitude},${viewPort.zoom},0/300x300?access_token=${accessToken}`
     );
-
     if (res.status === 200 || res.status === 201) {
       const data = await res.arrayBuffer();
-      const base64Data = btoa(
-        new Uint8Array(data).reduce(
-          (data, byte) => data + String.fromCharCode(byte),
-          ""
-        )
-      );
-      const objectURL = `data:image/jpeg;base64,${base64Data}`;
+      const blob = new Blob([data], { type: "image/jpeg" });
+      const objectURL = URL.createObjectURL(blob);
       setScreenShot(objectURL);
       setBoxTexture(objectURL);
+      setShowModal(true);
+      setTimeout(() => setShowModal(false), 1500);
     } else {
       console.error("Error fetching image data");
     }
   };
+  useEffect(() => {
+    localStorage.setItem("prevMapState", JSON.stringify(viewPort));
+  }, [viewPort]);
+  useEffect(() => {
+    setViewPort(JSON.parse(localStorage.getItem("prevMapState")));
+  }, []);
+  const mapStyles = "mapbox://styles/ames2700/cllw50r3000g901pj638y82b0";
+
   return (
     <div id="map-container" className="map">
       <Map
+        id="go-behind"
         onMove={(event) => setViewPort(event.viewState)}
         {...viewPort}
         mapboxAccessToken={process.env.REACT_APP_MAP_TOKEN}
-        mapStyle="mapbox://styles/ames2700/cllw50r3000g901pj638y82b0"
+        mapStyle={mapStyles}
+        aria-label="Open Street Map"
       >
         <NavigationControl />
-        <Marker longitude={initialLongitude} latitude={initialLatitude} />
+        <Marker
+          id="go-behind"
+          aria-label="Map Marker"
+          longitude={initialLongitude}
+          latitude={initialLatitude}
+        />
         <GeolocateControl
+          id="go-behind"
           position="top-left"
           positionOptions={{ enableHighAccuracy: true }}
         />
@@ -64,7 +78,7 @@ export const MapBox = () => {
         className="screenshot-btn"
         onClick={() => {
           fetchImage();
-          navigate("/cube");
+          // navigate("/cube");
         }}
       >
         Take a Screenshot
