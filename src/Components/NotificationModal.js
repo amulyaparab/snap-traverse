@@ -1,8 +1,7 @@
 import { useBox } from "../Contexts/BoxProvider";
-import { useScreenshot } from "../Contexts/ScreenShotProvider";
 
 export const NotificationModal = () => {
-  const { screenshot, setShowModal } = useScreenshot();
+  const { screenshot, setShowModal } = useBox();
   return (
     <div className="overlay" onClick={() => setShowModal(false)}>
       <div className="notification-modal">
