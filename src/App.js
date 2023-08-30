@@ -6,12 +6,14 @@ import { useTheme } from "./Contexts/ThemeProvider";
 import "./dark-theme.css";
 import "./light-theme.css";
 import { Suspense, lazy } from "react";
+
 function App() {
   const { theme } = useTheme();
   document.body.className = theme;
 
   const Map = lazy(() => import("./Pages/Map"));
   const Cube = lazy(() => import("./Pages/Cube"));
+
   return (
     <div className="App">
       <Navbar />
