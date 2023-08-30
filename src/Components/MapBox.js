@@ -3,6 +3,7 @@ import "mapbox-gl/dist/mapbox-gl.css";
 import Map, { GeolocateControl, Marker } from "react-map-gl";
 import { NavigationControl } from "react-map-gl";
 import { useBox } from "../Contexts/BoxProvider";
+import { useLocation } from "react-router-dom";
 
 export const MapBox = () => {
   const initialLongitude = 73.8562;
@@ -14,7 +15,7 @@ export const MapBox = () => {
     latitude: initialLatitude,
     zoom: 10,
   };
-
+  const location = useLocation();
   const [viewPort, setViewPort] = useState(
     initialViewport
       ? JSON.parse(localStorage.getItem("prevMapState"))
@@ -43,11 +44,14 @@ export const MapBox = () => {
 
   useEffect(() => {
     localStorage.setItem("prevMapState", JSON.stringify(viewPort));
-  }, [viewPort]);
+  }, [viewPort, location.pathname]);
 
   useEffect(() => {
     setViewPort(JSON.parse(localStorage.getItem("prevMapState")));
-  }, []);
+    return () => {
+      console.log("map unmounted");
+    };
+  }, [location.pathname]);
 
   const mapStyles = "mapbox://styles/ames2700/cllw50r3000g901pj638y82b0";
 

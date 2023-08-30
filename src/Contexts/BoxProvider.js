@@ -22,7 +22,7 @@ export const BoxProvider = ({ children }) => {
       ? "https://images.unsplash.com/photo-1570284613060-766c33850e00?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
       : "https://images.unsplash.com/photo-1602173195036-5c649b66422d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1674&q=80"
   );
-
+  const [showMap, setShowMap] = useState(true);
   const onSceneReady = (scene) => {
     const camera = new ArcRotateCamera(
       "camera",
@@ -60,6 +60,8 @@ export const BoxProvider = ({ children }) => {
         setScreenShot,
         showModal,
         setShowModal,
+        showMap,
+        setShowMap,
       }}
     >
       {children}

@@ -2,7 +2,7 @@ import { MapBox } from "../Components/MapBox";
 import { NotificationModal } from "../Components/NotificationModal";
 import { useBox } from "../Contexts/BoxProvider";
 
-export const Map = () => {
+const Map = () => {
   const { showModal } = useBox();
   return (
     <div className="relative">
@@ -12,3 +12,4 @@ export const Map = () => {
     </div>
   );
 };
+export default Map;

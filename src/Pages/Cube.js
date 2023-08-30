@@ -1,7 +1,7 @@
 import { SceneComponent } from "../Components/SceneComponent";
 import { useBox } from "../Contexts/BoxProvider";
 
-export const Cube = () => {
+const Cube = () => {
   const { onSceneReady } = useBox();
   return (
     <>
@@ -9,3 +9,4 @@ export const Cube = () => {
     </>
   );
 };
+export default Cube;

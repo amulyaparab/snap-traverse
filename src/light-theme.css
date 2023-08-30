@@ -24,5 +24,5 @@ body.light i:hover {
 .light-routing .active,
 .light-routing .active:hover {
   color: #212121;
-  text-shadow: 0 0 20px black;
+  text-shadow: 0 0 20px rgb(36, 35, 35);
 }
