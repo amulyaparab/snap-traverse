@@ -4,7 +4,7 @@ import { useLocation } from "react-router-dom";
 
 export const SceneComponent = ({ antialias, onSceneReady }) => {
   const reactCanvas = useRef(null);
-  const location = useLocation();
+
   useEffect(() => {
     const { current: canvas } = reactCanvas;
 
@@ -36,7 +36,7 @@ export const SceneComponent = ({ antialias, onSceneReady }) => {
       scene.getEngine().dispose();
       window.addEventListener("resize", resize);
     };
-  }, [location.pathname]);
+  }, []);
 
   return <canvas className="canvas" ref={reactCanvas} id="react-canvas" />;
 };

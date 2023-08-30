@@ -16,7 +16,7 @@ export const MapBox = () => {
     zoom: 10,
   };
   const location = useLocation();
-
+  const { setShowCube } = useBox();
   const mapStateFromLocalStorage = localStorage.getItem("prevMapState");
   const [viewPort, setViewPort] = useState(
     mapStateFromLocalStorage
@@ -35,10 +35,12 @@ export const MapBox = () => {
       const data = await res.arrayBuffer();
       const blob = new Blob([data], { type: "image/jpeg" });
       const objectURL = URL.createObjectURL(blob);
+      localStorage.setItem("screenshot", objectURL);
       setScreenShot(objectURL);
       setBoxTexture(objectURL);
       setShowModal(true);
       setTimeout(() => setShowModal(false), 3000);
+      setShowCube(true);
     } else {
       console.error("Error fetching image data");
     }

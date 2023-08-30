@@ -6,6 +6,7 @@ import { useTheme } from "./Contexts/ThemeProvider";
 import "./dark-theme.css";
 import "./light-theme.css";
 import { Suspense, lazy } from "react";
+import { useBox } from "./Contexts/BoxProvider";
 
 function App() {
   const { theme } = useTheme();
@@ -13,7 +14,7 @@ function App() {
 
   const Map = lazy(() => import("./Pages/Map"));
   const Cube = lazy(() => import("./Pages/Cube"));
-
+  const { showCube } = useBox();
   return (
     <div className="App">
       <Navbar />

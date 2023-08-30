@@ -1,4 +1,4 @@
-import { createContext, useContext, useRef, useState } from "react";
+import { createContext, useContext, useEffect, useRef, useState } from "react";
 
 import {
   ArcRotateCamera,
@@ -15,14 +15,22 @@ const BoxContext = createContext();
 
 export const BoxProvider = ({ children }) => {
   const { theme } = useTheme();
-  const [screenshot, setScreenShot] = useState("");
+  const prevScreenshot = localStorage.getItem("screenshot");
+  const [screenshot, setScreenShot] = useState(
+    prevScreenshot ? prevScreenshot : ""
+  );
   const [showModal, setShowModal] = useState(false);
   const [boxTexture, setBoxTexture] = useState(
-    theme === "dark"
-      ? "https://images.unsplash.com/photo-1570284613060-766c33850e00?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
-      : "https://images.unsplash.com/photo-1602173195036-5c649b66422d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1674&q=80"
+    prevScreenshot ? prevScreenshot : ""
+    // theme === "dark"
+    //   ? "https://images.unsplash.com/photo-1570284613060-766c33850e00?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+    //   : "https://images.unsplash.com/photo-1602173195036-5c649b66422d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1674&q=80"
   );
-  const [showMap, setShowMap] = useState(true);
+  const [showCube, setShowCube] = useState(
+    localStorage.getItem("shouldShowCube")
+      ? localStorage.getItem("shouldShowCube")
+      : false
+  );
   const cube = useRef(null);
 
   const onSceneReady = (scene) => {
@@ -59,6 +67,9 @@ export const BoxProvider = ({ children }) => {
       cube.current.scaling.z += 1;
     }
   };
+  useEffect(() => {
+    localStorage.setItem("shouldShowCube", showCube);
+  }, []);
   return (
     <BoxContext.Provider
       value={{
@@ -68,8 +79,8 @@ export const BoxProvider = ({ children }) => {
         setScreenShot,
         showModal,
         setShowModal,
-        showMap,
-        setShowMap,
+        showCube,
+        setShowCube,
         scaleCube,
       }}
     >
