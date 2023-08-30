@@ -12,6 +12,7 @@ export const NotificationModal = () => {
           <p>You can now go check it your cube.</p>
         </div>
       </div>
+      <div className="line"></div>{" "}
     </div>
   );
 };

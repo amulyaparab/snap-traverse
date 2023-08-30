@@ -2,3 +2,27 @@ body.light {
   color: #212121;
   background-color: #ffebb8;
 }
+body.light i:hover {
+  color: #5f94c5;
+}
+
+.light-nav {
+  background-color: #fccd4c;
+  box-shadow: 0 0 10px 0.5px #212121;
+}
+
+.light-routing a {
+  color: #212121;
+  font-weight: bold;
+}
+
+.light-routing a:hover {
+  color: #5f94c5;
+  text-shadow: 0 0 30px rgb(141, 212, 253), 0 0 80px rgb(102, 131, 226);
+}
+
+.light-routing .active,
+.light-routing .active:hover {
+  color: #212121;
+  text-shadow: 0 0 20px black;
+}

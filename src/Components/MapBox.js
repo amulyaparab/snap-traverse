@@ -54,7 +54,6 @@ export const MapBox = () => {
   return (
     <div id="map-container" className="map">
       <Map
-        id="go-behind"
         onMove={(event) => setViewPort(event.viewState)}
         {...viewPort}
         mapboxAccessToken={process.env.REACT_APP_MAP_TOKEN}
@@ -63,13 +62,11 @@ export const MapBox = () => {
       >
         <NavigationControl />
         <Marker
-          id="go-behind"
           aria-label="Map Marker"
           longitude={initialLongitude}
           latitude={initialLatitude}
         />
         <GeolocateControl
-          id="go-behind"
           position="top-left"
           positionOptions={{ enableHighAccuracy: true }}
         />

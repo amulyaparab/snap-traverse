@@ -3,12 +3,10 @@ import { useTheme } from "../Contexts/ThemeProvider";
 
 export const Navbar = () => {
   const navigate = useNavigate();
-  const { theme, setTheme } = useTheme();
-  const toggleTheme = () => {
-    theme === "dark" ? setTheme("light") : setTheme("dark");
-  };
+  const { theme, toggleTheme } = useTheme();
+
   return (
-    <div className="navbar">
+    <div className={theme === "dark" ? "navbar" : "light-nav navbar"}>
       <h1 onClick={() => navigate("/")}>Snap Traverse</h1>
       {theme === "dark" ? (
         <i className="fa-solid fa-moon" onClick={toggleTheme}></i>

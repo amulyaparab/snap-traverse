@@ -55,17 +55,17 @@ a:hover,
   text-shadow: 0 0 7px #e6e6e6, 0 0 45px rgb(114, 141, 231),
     0 0 90px rgb(114, 176, 247);
 }
-.pagination {
+.routing {
   list-style: none;
   display: flex;
   justify-content: center;
   margin-top: 2rem;
 }
-.pagination li {
+.routing li {
   font-size: 1.5rem;
   margin-right: 2rem;
 }
-.pagination li:first-child {
+.routing li:first-child {
   padding-right: 2rem;
   border-right: rgb(111, 151, 196) solid 2px;
   border-radius: 2px;
@@ -90,6 +90,7 @@ a:hover,
   width: 90%;
   margin: auto;
   height: 70vh;
+  border-radius: 10px;
 }
 .active,
 .active:hover {
@@ -153,4 +154,26 @@ a:hover,
 .notification-modal img {
   width: 100px;
   height: 100px;
+}
+.mapboxgl-ctrl-logo {
+  display: none !important;
+}
+a.mapbox-improve-map {
+  display: none !important;
+}
+.target {
+  background-color: transparent;
+  border: #212121 solid 0.5px;
+  width: 300px;
+  height: 300px;
+  position: absolute;
+  top: 50%;
+  bottom: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 10px 0.5px #212121;
+  pointer-events: none;
+}
+.relative {
+  position: relative;
 }

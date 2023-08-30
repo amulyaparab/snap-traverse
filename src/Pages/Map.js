@@ -5,9 +5,10 @@ import { useBox } from "../Contexts/BoxProvider";
 export const Map = () => {
   const { showModal } = useBox();
   return (
-    <>
+    <div className="relative">
       {showModal && <NotificationModal />}
       <MapBox />
-    </>
+      <div className="target"></div>
+    </div>
   );
 };
