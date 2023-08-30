@@ -135,6 +135,7 @@ a:hover,
   right: 1rem;
   padding: 0.2rem;
   border-radius: 5px;
+  cursor: pointer;
 }
 .notification-modal div {
   width: max-content;
