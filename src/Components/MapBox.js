@@ -16,9 +16,11 @@ export const MapBox = () => {
     zoom: 10,
   };
   const location = useLocation();
+
+  const mapStateFromLocalStorage = localStorage.getItem("prevMapState");
   const [viewPort, setViewPort] = useState(
-    initialViewport
-      ? JSON.parse(localStorage.getItem("prevMapState"))
+    mapStateFromLocalStorage
+      ? JSON.parse(mapStateFromLocalStorage)
       : initialViewport
   );
 

@@ -8,12 +8,12 @@ export const Header = () => {
     <ul className={theme === "dark" ? "routing" : "routing light-routing"}>
       <li>
         <NavLink to="/" activeclassname="active">
-          Map
+          Map View
         </NavLink>
       </li>
       <li>
         <NavLink to="/cube" activeclassname="active">
-          Cube
+          Cube View
         </NavLink>
       </li>
     </ul>

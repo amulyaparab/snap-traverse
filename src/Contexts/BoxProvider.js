@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useRef, useState } from "react";
 
 import {
   ArcRotateCamera,
@@ -23,6 +23,8 @@ export const BoxProvider = ({ children }) => {
       : "https://images.unsplash.com/photo-1602173195036-5c649b66422d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1674&q=80"
   );
   const [showMap, setShowMap] = useState(true);
+  const cube = useRef(null);
+
   const onSceneReady = (scene) => {
     const camera = new ArcRotateCamera(
       "camera",
@@ -46,11 +48,17 @@ export const BoxProvider = ({ children }) => {
 
     let box = MeshBuilder.CreateBox("box", { size: 2 }, scene);
     box.material = material;
-
+    cube.current = box;
     let boxPosition = box.position;
     console.log(boxPosition);
   };
-
+  const scaleCube = () => {
+    if (cube.current) {
+      cube.current.scaling.x += 0.5;
+      cube.current.scaling.y += 0.2;
+      cube.current.scaling.z += 1;
+    }
+  };
   return (
     <BoxContext.Provider
       value={{
@@ -62,6 +70,7 @@ export const BoxProvider = ({ children }) => {
         setShowModal,
         showMap,
         setShowMap,
+        scaleCube,
       }}
     >
       {children}
