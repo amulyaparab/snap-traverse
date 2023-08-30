@@ -11,10 +11,11 @@ import { useBox } from "./Contexts/BoxProvider";
 function App() {
   const { theme } = useTheme();
   document.body.className = theme;
+  const { showCube } = useBox();
 
   const Map = lazy(() => import("./Pages/Map"));
   const Cube = lazy(() => import("./Pages/Cube"));
-  const { showCube } = useBox();
+
   return (
     <div className="App">
       <Navbar />
@@ -22,7 +23,7 @@ function App() {
       <Suspense fallback={<h2>Loading...</h2>}>
         <Routes>
           <Route path="/" element={<Map />} />
-          <Route path="/cube" element={<Cube />} />
+          {showCube && <Route path="/cube" element={<Cube />} />}
         </Routes>
       </Suspense>
     </div>

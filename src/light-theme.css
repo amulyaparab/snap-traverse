@@ -2,6 +2,7 @@ body.light {
   color: #212121;
   background-color: #ffebb8;
 }
+
 body.light i:hover {
   color: #5f94c5;
 }

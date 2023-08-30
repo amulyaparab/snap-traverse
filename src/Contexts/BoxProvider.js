@@ -15,23 +15,26 @@ const BoxContext = createContext();
 
 export const BoxProvider = ({ children }) => {
   const { theme } = useTheme();
+  const cube = useRef(null);
+
+  const [showModal, setShowModal] = useState(false);
   const prevScreenshot = localStorage.getItem("screenshot");
   const [screenshot, setScreenShot] = useState(
     prevScreenshot ? prevScreenshot : ""
   );
-  const [showModal, setShowModal] = useState(false);
   const [boxTexture, setBoxTexture] = useState(
     prevScreenshot ? prevScreenshot : ""
-    // theme === "dark"
-    //   ? "https://images.unsplash.com/photo-1570284613060-766c33850e00?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
-    //   : "https://images.unsplash.com/photo-1602173195036-5c649b66422d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1674&q=80"
   );
+
   const [showCube, setShowCube] = useState(
     localStorage.getItem("shouldShowCube")
       ? localStorage.getItem("shouldShowCube")
       : false
   );
-  const cube = useRef(null);
+
+  // theme === "dark"
+  //   ? "https://images.unsplash.com/photo-1570284613060-766c33850e00?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+  //   : "https://images.unsplash.com/photo-1602173195036-5c649b66422d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1674&q=80"
 
   const onSceneReady = (scene) => {
     const camera = new ArcRotateCamera(
@@ -57,9 +60,11 @@ export const BoxProvider = ({ children }) => {
     let box = MeshBuilder.CreateBox("box", { size: 2 }, scene);
     box.material = material;
     cube.current = box;
+
     let boxPosition = box.position;
-    console.log(boxPosition);
+    // console.log(boxPosition);
   };
+
   const scaleCube = () => {
     if (cube.current) {
       cube.current.scaling.x += 0.5;
@@ -67,9 +72,11 @@ export const BoxProvider = ({ children }) => {
       cube.current.scaling.z += 1;
     }
   };
+
   useEffect(() => {
     localStorage.setItem("shouldShowCube", showCube);
-  }, []);
+  }, [showCube]);
+
   return (
     <BoxContext.Provider
       value={{

@@ -4,6 +4,7 @@ import { useBox } from "../Contexts/BoxProvider";
 export const NotificationModal = () => {
   const { screenshot, setShowModal } = useBox();
   const navigate = useNavigate();
+
   return (
     <div className="overlay" onClick={() => setShowModal(false)}>
       <div

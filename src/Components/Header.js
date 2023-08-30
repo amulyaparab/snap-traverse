@@ -4,7 +4,6 @@ import { useBox } from "../Contexts/BoxProvider";
 
 export const Header = () => {
   const { theme } = useTheme();
-
   const { showCube } = useBox();
 
   return (

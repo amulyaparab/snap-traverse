@@ -4,6 +4,7 @@ import { useBox } from "../Contexts/BoxProvider";
 
 const Map = () => {
   const { showModal } = useBox();
+
   return (
     <div className="relative">
       {showModal && <NotificationModal />}
@@ -12,4 +13,5 @@ const Map = () => {
     </div>
   );
 };
+
 export default Map;

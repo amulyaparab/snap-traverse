@@ -55,12 +55,14 @@ a:hover,
   text-shadow: 0 0 7px #e6e6e6, 0 0 45px rgb(114, 141, 231),
     0 0 90px rgb(114, 176, 247);
 }
+
 .routing {
   list-style: none;
   display: flex;
   justify-content: center;
   margin-top: 2rem;
 }
+
 .routing li {
   font-size: 1.5rem;
   margin-right: 2rem;
@@ -71,6 +73,7 @@ a:hover,
   border-radius: 2px;
   border-right: rgb(111, 151, 196) solid 2px;
 }
+
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -78,27 +81,32 @@ a:hover,
   padding: 0.3rem 3rem;
   box-shadow: 0 0 5px 0.5px rgb(83, 157, 241);
 }
+
 .navbar {
   cursor: pointer;
 }
+
 .navbar i {
   font-size: 1.5rem;
   cursor: pointer;
   color: white;
   text-shadow: 0 0 7px #e6e6e6, 0 0 45px rgb(114, 141, 231);
 }
+
 .map {
   width: 90%;
   margin: auto;
   height: 70vh;
   border-radius: 10px;
 }
+
 .active,
 .active:hover {
   color: white;
   text-shadow: 0 0 7px #e6e6e6, 0 0 45px rgb(114, 141, 231),
     0 0 90px rgb(114, 176, 247);
 }
+
 .screenshot-btn {
   background-color: #212121;
   color: white;
@@ -112,11 +120,13 @@ a:hover,
   text-shadow: 0 0 7px #e6e6e6, 0 0 45px rgb(114, 141, 231),
     0 0 90px rgb(114, 176, 247);
 }
+
 .screenshot-btn:hover {
   background-color: white;
   color: #212121;
   text-shadow: 0 0 10px black, 0 0 45px rgb(114, 141, 231);
 }
+
 .overlay {
   position: fixed;
   top: 0;
@@ -126,6 +136,7 @@ a:hover,
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 10;
 }
+
 .notification-modal {
   position: absolute;
   background-color: #dfdddd;
@@ -138,11 +149,13 @@ a:hover,
   border-radius: 5px;
   cursor: pointer;
 }
+
 .notification-modal div {
   width: max-content;
   text-align: left;
   padding: 0 2rem;
 }
+
 .notification-modal i {
   position: absolute;
   top: 8px;
@@ -150,19 +163,24 @@ a:hover,
   font-size: 21px;
   cursor: pointer;
 }
+
 .notification-modal p {
   font-size: 14px;
 }
+
 .notification-modal img {
   width: 100px;
   height: 100px;
 }
+
 .mapboxgl-ctrl-logo {
   display: none !important;
 }
+
 a.mapbox-improve-map {
   display: none !important;
 }
+
 .target {
   background-color: transparent;
   border: #212121 solid 0.5px;
@@ -176,6 +194,7 @@ a.mapbox-improve-map {
   box-shadow: 0 0 10px 0.5px #212121;
   pointer-events: none;
 }
+
 .relative {
   position: relative;
 }

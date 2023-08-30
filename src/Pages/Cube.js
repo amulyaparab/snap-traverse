@@ -3,6 +3,7 @@ import { useBox } from "../Contexts/BoxProvider";
 
 const Cube = () => {
   const { onSceneReady, scaleCube } = useBox();
+
   return (
     <>
       <SceneComponent antialias onSceneReady={onSceneReady} />
@@ -10,4 +11,5 @@ const Cube = () => {
     </>
   );
 };
+
 export default Cube;

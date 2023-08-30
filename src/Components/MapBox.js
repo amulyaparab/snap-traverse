@@ -4,10 +4,15 @@ import Map, { GeolocateControl, Marker } from "react-map-gl";
 import { NavigationControl } from "react-map-gl";
 import { useBox } from "../Contexts/BoxProvider";
 import { useLocation } from "react-router-dom";
-import { useDebounce } from "../Hooks/useDebounce";
+// import { useDebounce } from "../Hooks/useDebounce";
+
 export const MapBox = () => {
   const initialLongitude = 73.8562;
   const initialLatitude = 18.5204;
+  const location = useLocation();
+  const { setShowCube, setBoxTexture, setScreenShot, setShowModal } = useBox();
+
+  const mapStateFromLocalStorage = localStorage.getItem("prevMapState");
   const initialViewport = {
     width: "100%",
     height: "100%",
@@ -15,17 +20,14 @@ export const MapBox = () => {
     latitude: initialLatitude,
     zoom: 10,
   };
-  const location = useLocation();
-  const { setShowCube } = useBox();
-  const mapStateFromLocalStorage = localStorage.getItem("prevMapState");
   const [viewPort, setViewPort] = useState(
     mapStateFromLocalStorage
       ? JSON.parse(mapStateFromLocalStorage)
       : initialViewport
   );
 
-  const { setBoxTexture, setScreenShot, setShowModal } = useBox();
   const accessToken = process.env.REACT_APP_MAP_TOKEN;
+  const mapStyles = "mapbox://styles/ames2700/cllw50r3000g901pj638y82b0";
 
   const fetchImage = async () => {
     const res = await fetch(
@@ -57,12 +59,10 @@ export const MapBox = () => {
     };
   }, [location.pathname]);
 
-  const mapStyles = "mapbox://styles/ames2700/cllw50r3000g901pj638y82b0";
-  const debouncedFunction = useDebounce((event) => {
-    setViewPort(event.viewState);
-  }, 50);
+  // const debouncedFunction = useDebounce((event) => {
+  //   setViewPort(event.viewState);
+  // }, 50);
 
-  console.log(viewPort);
   return (
     <div id="map-container" className="map">
       <Map
