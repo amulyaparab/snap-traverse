@@ -18,19 +18,11 @@ export const BoxProvider = ({ children }) => {
   const [showModal, setShowModal] = useState(false);
 
   const prevScreenshot = localStorage.getItem("screenshot");
-  const [screenshot, setScreenShot] = useState(
-    prevScreenshot ? prevScreenshot : ""
-  );
+  const [screenshot, setScreenShot] = useState(prevScreenshot || "");
+  const [boxTexture, setBoxTexture] = useState(prevScreenshot || "");
 
-  const [boxTexture, setBoxTexture] = useState(
-    prevScreenshot ? prevScreenshot : ""
-  );
-
-  const [showCube, setShowCube] = useState(
-    localStorage.getItem("shouldShowCube")
-      ? localStorage.getItem("shouldShowCube")
-      : false
-  );
+  const shouldShowCube = JSON.parse(localStorage.getItem("shouldShowCube"));
+  const [showCube, setShowCube] = useState(shouldShowCube || false);
 
   const onSceneReady = (scene) => {
     let box;

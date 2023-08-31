@@ -1,4 +1,5 @@
-import error from "../page-not-found.svg";
+import error from "../Images/page-not-found.svg";
+
 export const ErrorPage = () => {
   return (
     <>

@@ -10,7 +10,6 @@ export const Loader = () => {
         height="180"
         width="180"
         ariaLabel="progress-bar-loading"
-        wrapperStyle={{}}
         wrapperClass="progress-bar-wrapper"
         borderColor={isThemeDark ? "#fff" : "#fccd4c"}
         barColor={isThemeDark ? "#fff" : "#fccd4c"}

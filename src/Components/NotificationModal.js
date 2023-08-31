@@ -24,7 +24,7 @@ export const NotificationModal = () => {
         <img src={screenshot} alt="screenshot" />
         <div>
           <h3>Screenshot Successfully Captured!</h3>
-          <p>You can now go check it your cube.</p>
+          <p>You may now go check it on your cube.</p>
         </div>
       </div>
       <div className="line"></div>{" "}

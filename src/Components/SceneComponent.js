@@ -34,7 +34,9 @@ export const SceneComponent = ({ antialias, onSceneReady }) => {
 
     return () => {
       scene.getEngine().dispose();
-      window.addEventListener("resize", resize);
+      if (window) {
+        window.removeEventListener("resize", resize);
+      }
     };
   }, []);
 

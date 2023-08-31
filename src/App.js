@@ -18,7 +18,7 @@ function App() {
 
   const Map = lazy(() => import("./Pages/Map"));
   const Cube = lazy(() => import("./Pages/Cube"));
-
+  console.log({ showCube });
   return (
     <div className="App">
       <Navbar />
