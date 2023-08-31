@@ -74,9 +74,9 @@ export const MapBox = () => {
           setViewPort(event.viewState);
         }}
         {...viewPort}
-        // reuseMaps
+        reuseMaps
         mapboxAccessToken={process.env.REACT_APP_MAP_TOKEN}
-        mapStyle="mapbox://styles/ames2700/cllw50r3000g901pj638y82b0"
+        mapStyle={mapStyles}
         aria-label="Open Street Map"
         preserveDrawingBuffer={true}
       >
