@@ -198,3 +198,7 @@ a.mapbox-improve-map {
 .relative {
   position: relative;
 }
+
+.top-shift {
+  height: 500px;
+}

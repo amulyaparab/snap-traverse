@@ -8,6 +8,7 @@ import "./light-theme.css";
 import { Suspense, lazy } from "react";
 import { useBox } from "./Contexts/BoxProvider";
 import { Loader } from "./Components/Loader";
+import { ErrorPage } from "./Pages/Error";
 
 function App() {
   const { theme } = useTheme();
@@ -25,6 +26,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Map />} />
           {showCube && <Route path="/cube" element={<Cube />} />}
+          <Route path="*" element={<ErrorPage />} />
         </Routes>
       </Suspense>
     </div>
