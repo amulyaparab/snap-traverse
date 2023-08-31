@@ -37,7 +37,7 @@
   }
 }
 .canvas {
-  width: 75%;
+  width: 78%;
   margin-top: 1.5rem;
   border-radius: 10px;
   outline: none;
@@ -82,15 +82,15 @@ a:hover,
   box-shadow: 0 0 5px 0.5px rgb(83, 157, 241);
 }
 
-.navbar {
-  cursor: pointer;
-}
-
 .navbar i {
   font-size: 1.5rem;
   cursor: pointer;
   color: white;
   text-shadow: 0 0 7px #e6e6e6, 0 0 45px rgb(114, 141, 231);
+}
+
+.navbar h1 {
+  cursor: pointer;
 }
 
 .map {
@@ -199,4 +199,16 @@ a:hover,
   display: block;
   margin: auto;
   margin-top: 2rem;
+}
+
+@media screen and (max-width: 1600px) {
+  .canvas {
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .canvas {
+    width: 94%;
+  }
 }
