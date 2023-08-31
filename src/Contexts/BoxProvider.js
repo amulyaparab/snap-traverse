@@ -16,7 +16,11 @@ const BoxContext = createContext();
 export const BoxProvider = ({ children }) => {
   const { theme } = useTheme();
   const cube = useRef(null);
-
+  let cubeRotationRef = {
+    x: 0,
+    y: 0,
+    z: 0,
+  };
   const [showModal, setShowModal] = useState(false);
   const prevScreenshot = localStorage.getItem("screenshot");
   const [screenshot, setScreenShot] = useState(
@@ -31,13 +35,13 @@ export const BoxProvider = ({ children }) => {
       ? localStorage.getItem("shouldShowCube")
       : false
   );
-
-  // theme === "dark"
-  //   ? "https://images.unsplash.com/photo-1570284613060-766c33850e00?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
-  //   : "https://images.unsplash.com/photo-1602173195036-5c649b66422d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1674&q=80"
-
+  const [isCuboid, setIsCuboid] = useState(true);
+  const [cubeRotation, setCubeRotation] = useState({
+    x: 0,
+    y: 0,
+    z: 0,
+  });
   const onSceneReady = (scene) => {
-    console.log(scene);
     const camera = new ArcRotateCamera(
       "camera",
       -Math.PI / 2,
@@ -63,12 +67,19 @@ export const BoxProvider = ({ children }) => {
     box.material = material;
     cube.current = box;
   };
-
-  const scaleCube = () => {
+  console.log(cube.current?.options);
+  const makeACuboid = () => {
     if (cube.current) {
-      cube.current.scaling.x += 0.5;
-      cube.current.scaling.y += 0.2;
-      cube.current.scaling.z += 1;
+      setIsCuboid(!isCuboid);
+      if (isCuboid) {
+        cube.current.scaling.x = 1;
+        cube.current.scaling.y = 0.5;
+        cube.current.scaling.z = 1.5;
+      } else {
+        cube.current.scaling.x = 1;
+        cube.current.scaling.y = 1;
+        cube.current.scaling.z = 1;
+      }
     }
   };
 
@@ -87,8 +98,13 @@ export const BoxProvider = ({ children }) => {
         setShowModal,
         showCube,
         setShowCube,
-        scaleCube,
+        makeACuboid,
         cube,
+        cubeRotation,
+        setCubeRotation,
+        cubeRotationRef,
+        isCuboid,
+        setIsCuboid,
       }}
     >
       {children}

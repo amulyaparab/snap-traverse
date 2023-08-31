@@ -173,14 +173,6 @@ a:hover,
   height: 100px;
 }
 
-.mapboxgl-ctrl-logo {
-  display: none !important;
-}
-
-a.mapbox-improve-map {
-  display: none !important;
-}
-
 .target {
   background-color: transparent;
   border: #212121 solid 0.5px;
@@ -201,4 +193,10 @@ a.mapbox-improve-map {
 
 .top-shift {
   height: 500px;
+}
+
+.down-btn {
+  display: block;
+  margin: auto;
+  margin-top: 2rem;
 }

@@ -4,7 +4,6 @@ import Map, { GeolocateControl, Marker } from "react-map-gl";
 import { NavigationControl } from "react-map-gl";
 import { useBox } from "../Contexts/BoxProvider";
 import { useLocation } from "react-router-dom";
-// import { useDebounce } from "../Hooks/useDebounce";
 
 export const MapBox = () => {
   const initialLongitude = 73.8562;
@@ -72,10 +71,6 @@ export const MapBox = () => {
     };
   }, [location.pathname]);
 
-  // const debouncedFunction = useDebounce((event) => {
-  //   setViewPort(event.viewState);
-  // }, 50);
-
   return (
     <div id="map-container" className="map">
       <Map
@@ -86,7 +81,6 @@ export const MapBox = () => {
         mapStyle={mapStyles}
         aria-label="Open Street Map"
       >
-        <NavigationControl />
         <Marker
           aria-label="Map Marker"
           longitude={initialLongitude}
@@ -96,6 +90,7 @@ export const MapBox = () => {
           position="top-left"
           positionOptions={{ enableHighAccuracy: true }}
         />
+        <NavigationControl />
       </Map>
       <button
         className="screenshot-btn"

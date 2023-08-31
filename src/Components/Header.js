@@ -22,13 +22,13 @@ export const Header = () => {
   return (
     <ul className={isThemeDark ? "routing" : "routing light-routing"}>
       <li onClick={handleRotation}>
-        {/* <NavLink
+        <NavLink
           to="/"
           activeclassname="active"
           className={showCube && "seperator"}
-        > */}
-        Map View
-        {/* </NavLink> */}
+        >
+          Map View
+        </NavLink>
       </li>
       {showCube && (
         <li>
