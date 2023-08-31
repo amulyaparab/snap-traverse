@@ -7,6 +7,7 @@ import "./dark-theme.css";
 import "./light-theme.css";
 import { Suspense, lazy } from "react";
 import { useBox } from "./Contexts/BoxProvider";
+import { Loader } from "./Components/Loader";
 
 function App() {
   const { theme } = useTheme();
@@ -20,7 +21,7 @@ function App() {
     <div className="App">
       <Navbar />
       <Header />
-      <Suspense fallback={<h2>Loading...</h2>}>
+      <Suspense fallback={<Loader />}>
         <Routes>
           <Route path="/" element={<Map />} />
           {showCube && <Route path="/cube" element={<Cube />} />}

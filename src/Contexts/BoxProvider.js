@@ -52,6 +52,7 @@ export const BoxProvider = ({ children }) => {
     const light = new HemisphericLight("light", new Vector3(0, 0, 0), scene);
     light.intensity = 0.2;
     light.groundColor = new Color3(7, 7, 7);
+    light.diffuse = new Color3(10, 10, 10);
 
     const texture = new Texture(boxTexture, scene);
     const material = new StandardMaterial("default", scene);

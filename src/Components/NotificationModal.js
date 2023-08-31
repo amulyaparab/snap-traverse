@@ -15,7 +15,7 @@ export const NotificationModal = () => {
         }}
       >
         <i
-          class="fa-solid fa-circle-xmark cross"
+          className="fa-solid fa-circle-xmark cross"
           onClick={(event) => {
             event.stopPropagation();
             setShowModal(false);
