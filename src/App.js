@@ -9,7 +9,6 @@ import { Suspense, lazy } from "react";
 import { useBox } from "./Contexts/BoxProvider";
 import { Loader } from "./Components/Loader";
 import { ErrorPage } from "./Pages/Error";
-import MapPage from "./Pages/Map";
 
 function App() {
   const { theme } = useTheme();
@@ -17,7 +16,7 @@ function App() {
 
   const { showCube } = useBox();
 
-  // const Map = lazy(() => import("./Pages/Map"));
+  const MapPage = lazy(() => import("./Pages/Map"));
   const Cube = lazy(() => import("./Pages/Cube"));
 
   return (
