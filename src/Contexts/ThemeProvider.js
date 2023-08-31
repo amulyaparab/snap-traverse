@@ -1,17 +1,28 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 const ThemeContext = createContext();
 
 export const ThemeProvider = ({ children }) => {
-  const [theme, setTheme] = useState("dark");
+  const isItemInLocalStorage = localStorage.getItem("themeOfSnapTraverse");
 
-  // const toggleTheme = () => {
-  //   theme === "dark" ? setTheme("light") : setTheme("dark");
-  //   theme === "dark" ? set
-  // };
+  const [theme, setTheme] = useState(
+    isItemInLocalStorage ? isItemInLocalStorage : "dark"
+  );
+
+  const isThemeDark = theme === "dark";
+
+  const toggleTheme = () => {
+    isThemeDark ? setTheme("light") : setTheme("dark");
+  };
+
+  useEffect(() => {
+    localStorage.setItem("themeOfSnapTraverse", theme);
+  }, [theme]);
 
   return (
-    <ThemeContext.Provider value={{ theme, setTheme }}>
+    <ThemeContext.Provider
+      value={{ theme, setTheme, toggleTheme, isThemeDark }}
+    >
       {children}
     </ThemeContext.Provider>
   );

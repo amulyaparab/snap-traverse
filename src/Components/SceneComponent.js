@@ -1,6 +1,5 @@
 import { Engine, Scene } from "@babylonjs/core";
 import { useEffect, useRef } from "react";
-import { useLocation } from "react-router-dom";
 
 export const SceneComponent = ({ antialias, onSceneReady }) => {
   const reactCanvas = useRef(null);

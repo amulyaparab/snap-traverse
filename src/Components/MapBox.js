@@ -35,8 +35,21 @@ export const MapBox = () => {
     );
     if (res.status === 200 || res.status === 201) {
       const data = await res.arrayBuffer();
-      const blob = new Blob([data], { type: "image/jpeg" });
-      const objectURL = URL.createObjectURL(blob);
+      // const base64Data = btoa(
+      //   new Uint8Array(data).reduce(
+      //     (data, byte) => data + String.fromCharCode(byte),
+      //     ""
+      //   )
+      // const blob = new Blob([data], { type: "image/jpeg" });
+      // const objectURL = URL.createObjectURL(blob);
+      const base64Data = btoa(
+        new Uint8Array(data).reduce(
+          (data, byte) => data + String.fromCharCode(byte),
+          ""
+        )
+      );
+      const objectURL = `data:image/jpeg;base64,${base64Data}`;
+
       localStorage.setItem("screenshot", objectURL);
       setScreenShot(objectURL);
       setBoxTexture(objectURL);
