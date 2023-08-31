@@ -78,7 +78,6 @@ export const MapBox = () => {
         mapboxAccessToken={process.env.REACT_APP_MAP_TOKEN}
         mapStyle={mapStyles}
         aria-label="Open Street Map"
-        preserveDrawingBuffer={true}
       >
         <Marker
           aria-label="Map Marker"
