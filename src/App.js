@@ -13,6 +13,7 @@ import { ErrorPage } from "./Pages/Error";
 function App() {
   const { theme } = useTheme();
   document.body.className = theme;
+
   const { showCube } = useBox();
 
   const Map = lazy(() => import("./Pages/Map"));

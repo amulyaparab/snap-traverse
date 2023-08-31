@@ -9,23 +9,19 @@ import {
   Texture,
   Vector3,
 } from "@babylonjs/core";
-import { useTheme } from "./ThemeProvider";
 
 const BoxContext = createContext();
 
 export const BoxProvider = ({ children }) => {
-  const { theme } = useTheme();
   const cube = useRef(null);
-  let cubeRotationRef = {
-    x: 0,
-    y: 0,
-    z: 0,
-  };
+
   const [showModal, setShowModal] = useState(false);
+
   const prevScreenshot = localStorage.getItem("screenshot");
   const [screenshot, setScreenShot] = useState(
     prevScreenshot ? prevScreenshot : ""
   );
+
   const [boxTexture, setBoxTexture] = useState(
     prevScreenshot ? prevScreenshot : ""
   );
@@ -35,13 +31,10 @@ export const BoxProvider = ({ children }) => {
       ? localStorage.getItem("shouldShowCube")
       : false
   );
-  const [isCuboid, setIsCuboid] = useState(true);
-  const [cubeRotation, setCubeRotation] = useState({
-    x: 0,
-    y: 0,
-    z: 0,
-  });
+
   const onSceneReady = (scene) => {
+    let box;
+
     const camera = new ArcRotateCamera(
       "camera",
       -Math.PI / 2,
@@ -63,24 +56,9 @@ export const BoxProvider = ({ children }) => {
     const material = new StandardMaterial("default", scene);
     material.diffuseTexture = texture;
 
-    let box = MeshBuilder.CreateBox("box", { size: 2 }, scene);
+    box = MeshBuilder.CreateBox("box", { size: 2 }, scene);
     box.material = material;
     cube.current = box;
-  };
-  console.log(cube.current?.options);
-  const makeACuboid = () => {
-    if (cube.current) {
-      setIsCuboid(!isCuboid);
-      if (isCuboid) {
-        cube.current.scaling.x = 1;
-        cube.current.scaling.y = 0.5;
-        cube.current.scaling.z = 1.5;
-      } else {
-        cube.current.scaling.x = 1;
-        cube.current.scaling.y = 1;
-        cube.current.scaling.z = 1;
-      }
-    }
   };
 
   useEffect(() => {
@@ -98,13 +76,7 @@ export const BoxProvider = ({ children }) => {
         setShowModal,
         showCube,
         setShowCube,
-        makeACuboid,
         cube,
-        cubeRotation,
-        setCubeRotation,
-        cubeRotationRef,
-        isCuboid,
-        setIsCuboid,
       }}
     >
       {children}
