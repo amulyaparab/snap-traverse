@@ -37,6 +37,7 @@ export const BoxProvider = ({ children }) => {
   //   : "https://images.unsplash.com/photo-1602173195036-5c649b66422d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1674&q=80"
 
   const onSceneReady = (scene) => {
+    console.log(scene);
     const camera = new ArcRotateCamera(
       "camera",
       -Math.PI / 2,
@@ -61,9 +62,6 @@ export const BoxProvider = ({ children }) => {
     let box = MeshBuilder.CreateBox("box", { size: 2 }, scene);
     box.material = material;
     cube.current = box;
-
-    let boxPosition = box.position;
-    // console.log(boxPosition);
   };
 
   const scaleCube = () => {
@@ -90,6 +88,7 @@ export const BoxProvider = ({ children }) => {
         showCube,
         setShowCube,
         scaleCube,
+        cube,
       }}
     >
       {children}
